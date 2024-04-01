@@ -1,8 +1,8 @@
 // // By using try..catch..finally
 
-// class ex17 {
+//class ex17 {
 //     public static void main(String[] args) {
-//         String s[] = new String[] { "1", "2", "3" };
+//         int s[] = { 1, 2, 3 };
 
 //         try {
 //             System.out.println(s[5]);
