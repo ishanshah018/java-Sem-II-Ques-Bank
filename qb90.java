@@ -26,8 +26,6 @@ class ex17 {
             if (index >= numbers.length) {
                 throw new ArrayIndexOutOfBoundsException("Index " + index + " is out of bounds for the array");
             }
-
-            System.out.println(numbers[index]);
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
         } finally {
