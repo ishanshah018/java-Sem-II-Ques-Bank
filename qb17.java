@@ -4,9 +4,8 @@ abstract class vegetable {
     String color;
 
     // Override
-    public String toString() {
-        return " ";
-    }
+    public abstract String toString();
+        
 
 }
 
