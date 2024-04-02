@@ -3,7 +3,6 @@
 abstract class vegetable {
     String color;
 
-    // Override
     public abstract String toString();
         
 
