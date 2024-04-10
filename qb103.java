@@ -18,7 +18,7 @@ class qb103 {
                 System.out.println("Exception: " + e.getMessage());
             }
         }
-        System.out.println("All Argument are valid and non-negative ");
+       
     }
 }
 
