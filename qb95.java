@@ -2,7 +2,7 @@
 
 class ex17 {
     public static void main(String[] args) {
-        String s[] = new String[] { null, "PQR" };
+        String s[] = { null, "PQR" };
         try {
             s[0].length();
         } catch (NullPointerException e) {
