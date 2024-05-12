@@ -18,167 +18,160 @@ implement functions to add, remove, update and display employees.
 
 */
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 class Employee {
-    private String name;
-    private int age;
-    private double salary;
+    String name;
+    String age;
+    String salary;
 
-    public Employee(String name, int age, double salary) {
-        this.name = name;
-        this.age = age;
-        this.salary = salary;
-    }
+    public Employee(String name, String age, String salary) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+    }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {
+        return name;
+    }
 
-    public int getAge() {
-        return age;
-    }
+    public String getAge() {
+        return age;
+    }
 
-    public double getSalary() {
-        return salary;
-    }
+    public String getSalary() {
+        return salary;
+    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+    public void setAge(String age) {
+        this.age = age;
+    }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
 }
 
-public class EmployeeManagementSystem {
-    private ArrayList<Employee> employees;
-    private Scanner scanner;
+class QB215 {
+    static Scanner sc = new Scanner(System.in);
+    ArrayList<Employee> a1 = new ArrayList<>();
 
-    public EmployeeManagementSystem() {
-        employees = new ArrayList<>();
-        scanner = new Scanner(System.in);
-    }
+    void add() {
+        sc.nextLine();
+        System.out.println("Enter Name: ");
+        String name = sc.nextLine();
 
-    public void addEmployee() {
-        System.out.println("Enter employee name:");
-        String name = scanner.nextLine();
+        System.out.println("Enter Age: ");
+        String age = sc.nextLine();
 
-        System.out.println("Enter employee age:");
-        int age = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter Salary: ");
+        String salary = sc.nextLine();
 
-        System.out.println("Enter employee salary:");
-        double salary = Double.parseDouble(scanner.nextLine());
+        Employee emp = new Employee(name, age, salary);
+        a1.add(emp);
 
-        Employee employee = new Employee(name, age, salary);
-        employees.add(employee);
+    }
 
-        System.out.println("Employee added successfully.");
-    }
+    void remove() {
+        System.out.println("Enter Index you want to remove: ");
+        int index = sc.nextInt();
 
-    public void removeEmployee() {
-        System.out.println("Enter the index of the employee to remove:");
-        int index = Integer.parseInt(scanner.nextLine());
+        if (index >= 0 && index < a1.size()) {
+            Employee e = a1.get(index);
+            a1.remove(index);
+            System.out.println("Employee removed is: " + e.getName());
 
-        if (index >= 0 && index < employees.size()) {
-            Employee employee = employees.get(index);
-            employees.remove(index);
-            System.out.println("Removed employee: " + employee.getName());
-        } else {
-            System.out.println("Invalid index!");
-        }
-    }
+        } else {
+            System.out.println("INVALID CHOICE !!");
+        }
 
-    public void updateEmployee() {
-        System.out.println("Enter the index of the employee to update:");
-        int index = Integer.parseInt(scanner.nextLine());
+    }
 
-        if (index >= 0 && index < employees.size()) {
-            Employee employee = employees.get(index);
+    void update() {
+        System.out.println("Enter Index number to update");
+        int index = sc.nextInt();
 
-            System.out.println("Enter new name (leave blank to keep the current name):");
-            String newName = scanner.nextLine();
-            if (!newName.isEmpty()) {
-                employee.setName(newName);
-            }
+        if (index >= 0 && index < a1.size()) {
+            Employee e = a1.get(index);
+            sc.nextLine();
+            System.out.println("Enter new name(if not than leave empty)");
+            String newname = sc.nextLine();
 
-            System.out.println("Enter new age (leave blank to keep the current age):");
-            String newAgeStr = scanner.nextLine();
-            if (!newAgeStr.isEmpty()) {
-                int newAge = Integer.parseInt(newAgeStr);
-                employee.setAge(newAge);
-            }
+            System.out.println("Enter new age(if not than leave empty)");
+            String newage = sc.nextLine();
 
-            System.out.println("Enter new salary (leave blank to keep the current ary):");
-            String newSalaryStr = scanner.nextLine();
-            if (!newSalaryStr.isEmpty()) {
-                double newSalary = Double.parseDouble(newSalaryStr);
-                employee.setSalary(newSalary);
-            }
+            System.out.println("Enter new Salary(if not than leave empty)");
+            String newsalary = sc.nextLine();
 
-            System.out.println("Employee updated successfully.");
-        } else {
-            System.out.println("Invalid index!");
-        }
-    }
+            if (!newname.isEmpty()) {
+                e.setName(newname);
+            }
+            if (!newage.isEmpty()) {
+                e.setAge(newage);
+            }
+            if (!newsalary.isEmpty()) {
+                e.setSalary(newsalary);
+            }
 
-    public void displayEmployees() {
-        if (employees.isEmpty()) {
-            System.out.println("No employees found.");
-        } else {
-            System.out.println("Employee List:");
-            for (int i = 0; i < employees.size(); i++) {
-                Employee employee = employees.get(i);
-                System.out.println("Index: " + i + ", Name: " + employee.getName() + ", : " + employee.getAge()
-                        + ", Salary: " + employee.getSalary());
-            }
-        }
-    }
+            System.out.println("Employee Updated Succesfully !!");
 
-    public static void main(String[] args) {
-        EmployeeManagementSystem system = new EmployeeManagementSystem();
-        Scanner scanner = new Scanner(System.in);
-        int choice;
+        } else {
+            System.out.println("Invalid Index !");
+        }
+    }
 
-        do {
-            System.out.println("Employee Management System Menu:");
-            System.out.println("1. Add Employee");
-            System.out.println("2. Remove Employee");
-            System.out.println("3. Update Employee");
-            System.out.println("4. Display Employees");
-            System.out.println("0. Exit");
-            System.out.println("Enter your choice:");
+    void display() {
+        if (a1.isEmpty()) {
+            System.out.println("No Employee Found..");
+        } else {
+            for (int i = 0; i < a1.size(); i++) {
+                Employee e = a1.get(i);
+                System.out.println("Index " + i + " \n Name: " + e.getName() + " \n Age: " + e.getAge() + " \n Salary: "
+                        + e.getSalary());
+            }
+        }
+    }
 
-            choice = Integer.parseInt(scanner.nextLine());
+    public static void main(String[] args) {
+        QB215 qb = new QB215();
 
-            switch (choice) {
-                case 1:
-                    system.addEmployee();
-                    break;
-                case 2:
-                    system.removeEmployee();
-                    break;
-                case 3:
-                    system.updateEmployee();
-                    break;
-                case 4:
-                    system.displayEmployees();
-                    break;
-                case 0:
-                    System.out.println("Exiting...");
-                    break;
-                default:
-                    System.out.println("Invalid choice!");
-                    break;
-            }
+        while (true) {
+            System.out.println(
+                    "Enter Choice \n 1)Add Employee \n 2)Remove Employee \n 3)Update Employee \n 4)Display Employee \n 5)Exit");
+            int choice = sc.nextInt();
 
-            System.out.println();
-        } while (choice != 0);
-    }
+            switch (choice) {
+                case 1:
+                    qb.add();
+                    break;
+
+                case 2:
+                    qb.remove();
+                    break;
+
+                case 3:
+                    qb.update();
+                    break;
+
+                case 4:
+                    qb.display();
+                    break;
+
+                case 5:
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Enter Valid Choice !!");
+                    break;
+            }
+
+        }
+
+    }
 }
