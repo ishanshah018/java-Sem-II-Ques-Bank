@@ -54,7 +54,8 @@ class QB222 {
         System.out.print("Enter phone number: ");
         String phoneNo = sc.nextLine();
 
-        a1.add(new contact(name, phoneNo));
+        contact ct=new contact(name,phoneeNo);
+        a1.add(ct);
         System.out.println("Contact added successfully.");
     }
 
