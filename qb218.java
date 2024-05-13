@@ -7,7 +7,7 @@ import java.util.*;
 
 class QB218 {
     public static void main(String[] args) {
-        ArrayList<Integer> a1 = new ArrayList<>();
+        LinkedList<Integer> a1 = new LinkedList<>();
         a1.add(10);
         a1.add(20);
         a1.add(30);
