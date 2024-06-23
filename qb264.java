@@ -34,11 +34,12 @@ class MusicPlayer {
             System.out.println(
                     "1) Add Song. \n 2) PlayNext \n 3) PlayPrevious \n 4) Shuffle Songs \n 5) Display Playlist \n 6) Exit.");
             choice = sc.nextInt();
+            sc.nextLine();
 
             switch (choice) {
                 case 1:
                     System.out.println("Enter Song Name: ");
-                    String song = sc.next();
+                    String song = sc.nextLine();
                     playlist.addLast(song);
                     System.out.println("Song Added Succesfully..");
                     break;
@@ -58,7 +59,7 @@ class MusicPlayer {
                         System.out.println("PlayList is Empty..");
                     } else {
                         String previousSong = playlist.removeLast();
-                        System.out.println("Playing Next: " + previousSong);
+                        System.out.println("Playing Previous: " + previousSong);
                         playlist.addFirst(previousSong);
                     }
                     break;
@@ -84,6 +85,10 @@ class MusicPlayer {
 
                         }
                     }
+                    break;
+
+                case 6:
+                    System.exit(0);
                     break;
 
                 default:
